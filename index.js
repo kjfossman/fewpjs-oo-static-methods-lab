@@ -15,9 +15,13 @@ class Formatter {
     let array = title.split(' ')
     array[0] = Formatter.capitalize(array[0])
     let newArray = array.slice(1)
-    newArray = newArray.map(word => 
+    newArray = newArray.map(function(word){ 
         if(!badWords.includes(word)){
-          Formatter.capitalize(word)
+          return Formatter.capitalize(word)
+        }else{
+          return word 
         }
-    return newArray
-}
+      })
+      return (array[0] + "," + newArray).split(',').join(' ')
+    }
+  }
